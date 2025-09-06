@@ -1,4 +1,4 @@
-name: MAUI Unit Tests
+name: MAUI Unit Tests # Een comment om de workflow te activeren.
  
 on:
   push:
