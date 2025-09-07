@@ -7,7 +7,22 @@
              Title="GroceryListsView">
     <Shell.TitleView>
         <Grid>
-            <Label Text="Boodschappenlijsten Titel gewijzigd" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label 
+            Text="Boodschappenlijsten Titel gewijzigd" 
+            FontSize="Large" 
+            HorizontalOptions="Center" 
+            VerticalOptions="Center" 
+            Grid.Row="0"/>
+            <Label 
+            Text="Dit is de verborgen subtitel" 
+            FontSize="Medium" 
+            HorizontalOptions="Center" 
+            VerticalOptions="Center" 
+            Grid.Row="1"/>
         </Grid>
     </Shell.TitleView>
 
