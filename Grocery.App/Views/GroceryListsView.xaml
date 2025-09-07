@@ -12,47 +12,63 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label 
-            Text="Boodschappenlijsten Titel gewijzigd" 
-            FontSize="Large" 
-            HorizontalOptions="Center" 
-            VerticalOptions="Center" 
-            Grid.Row="0"/>
+                Text="Boodschappenlijsten Titel gewijzigd" 
+                FontSize="Large" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" 
+                Grid.Row="0"/>
             <Label 
-            Text="Dit is de verborgen subtitel" 
-            FontSize="Medium" 
-            HorizontalOptions="Center" 
-            VerticalOptions="Center" 
-            Grid.Row="1"/>
+                Text="Dit is de verborgen subtitel" 
+                FontSize="Medium" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center" 
+                Grid.Row="1"/>
         </Grid>
     </Shell.TitleView>
 
-    <Border Stroke="#C49B33"
-        StrokeThickness="4"
-        Padding="10"
-        Margin="10"
-        HorizontalOptions="Center">
-        <CollectionView x:Name="GroceryListView" ItemsSource="{Binding GroceryLists}" HorizontalOptions="Center"
-                        SelectionMode="Single"
-                        SelectionChangedCommand="{Binding SelectGroceryListCommand}"
-                        SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
-            </CollectionView.ItemsLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="m:GroceryList">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="15"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="{Binding Name}"/>
-                        <Label Grid.Column="1" Text="{Binding Date}" HorizontalOptions="End" Margin="0,0,10,0"/>
-                        <Rectangle Grid.Column="2" BackgroundColor="{Binding Color}" WidthRequest="15" HeightRequest="15" />
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Border>
+        <Border Grid.Row="0"
+            Stroke="#C49B33"
+            StrokeThickness="4"
+            Padding="10"
+            Margin="10"
+            HorizontalOptions="Center">
+            <CollectionView x:Name="GroceryListView" ItemsSource="{Binding GroceryLists}" HorizontalOptions="Center"
+                            SelectionMode="Single"
+                            SelectionChangedCommand="{Binding SelectGroceryListCommand}"
+                            SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:GroceryList">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="15"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="{Binding Name}"/>
+                            <Label Grid.Column="1" Text="{Binding Date}" HorizontalOptions="End" Margin="0,0,10,0"/>
+                            <Rectangle Grid.Column="2" BackgroundColor="{Binding Color}" WidthRequest="15" HeightRequest="15" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Border>
+
+        <!-- Label rechtsonder voor het aantal boodschappenlijsten -->
+        <Label
+            Grid.Row="1"
+            Text="{Binding GroceryLists.Count, StringFormat='Aantal lijsten: {0}'}"
+            HorizontalOptions="End"
+            VerticalOptions="End"
+            Margin="10"/>
+    </Grid>
 </ContentPage>
