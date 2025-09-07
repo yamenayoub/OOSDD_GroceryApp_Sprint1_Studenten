@@ -13,6 +13,13 @@
 
     <Border Stroke="#C49B33" StrokeThickness="4" Padding="10" Margin="10" HorizontalOptions="Center">
         <CollectionView ItemsSource="{Binding Products}" Margin="20" HorizontalOptions="Center">
+            <CollectionView.EmptyView>
+                <Label Text="Geen producten gevonden."
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="Medium"
+                       TextColor="Gray"/>
+            </CollectionView.EmptyView>
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
             </CollectionView.ItemsLayout>
